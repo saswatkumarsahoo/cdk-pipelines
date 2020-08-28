@@ -10,6 +10,8 @@ export class CdkpipelinesDemoStage extends Stage {
     super(scope, id, props);
 
     const lambdaStack = new CdkpipelinesDemoStack(this, 'lambdaStack');
+    const lambdaStack2 = new CdkpipelinesDemoStack(this, 'lambdaStack2');
+
    
   }
 }

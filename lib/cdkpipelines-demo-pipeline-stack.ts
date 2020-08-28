@@ -35,12 +35,14 @@ export class CdkpipelinesDemoPipelineStack extends Stack {
          cloudAssemblyArtifact,
          
          // We need a build step to compile the TypeScript Lambda
-         buildCommand: 'npm run build'
+         buildCommand: 'npm run build',
+         
        }),
     });
 
     pipeline.addApplicationStage(new CdkpipelinesDemoStage(this, 'US-EAST-1-STACK', {
         env: { account: '905731210888', region: 'us-east-1' }
       }));
+
   }
 }

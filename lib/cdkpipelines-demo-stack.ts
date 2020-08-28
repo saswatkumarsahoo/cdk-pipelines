@@ -7,9 +7,9 @@ export class CdkpipelinesDemoStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-     const handler = new lambda.Function(this, 'Lambda', {
+     const revokeSGRuleLambda = new lambda.Function(this, 'RevokeSGRuleLambda', {
       runtime: lambda.Runtime.PYTHON_3_8,
-      handler: 'handler.handler',
+      handler: 'revoke_sg_rule.handler',
       code: lambda.Code.fromAsset(path.resolve(__dirname, '../lambda')),
     });
 

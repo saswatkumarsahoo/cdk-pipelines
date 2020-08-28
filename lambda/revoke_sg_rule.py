@@ -1,11 +1,14 @@
 import boto3
 ec2 = boto3.client('ec2')
 
+MAX_SUBNET_MASK = 24
+
 
 def evaluate_rules(ipPermission):
+    '''Only allow CIDR ranges equal or greater than MAX_SUBNET_MASK'''
     ip_ranges_revoke = []
     for IpRange in ipPermission['IpRanges']:
-        if int(IpRange['CidrIp'].split('/')[1]) < 24:
+        if int(IpRange['CidrIp'].split('/')[1]) < MAX_SUBNET_MASK:
             ip_ranges_revoke.append(IpRange)
     print("revoke rule list", ip_ranges_revoke)
     return ip_ranges_revoke

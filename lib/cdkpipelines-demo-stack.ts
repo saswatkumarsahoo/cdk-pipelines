@@ -18,12 +18,13 @@ export class CdkpipelinesDemoStack extends cdk.Stack {
 
     lambdaRole.addToPolicy(new iam.PolicyStatement({
       resources: ['*'],
-      actions: ["ec2:InvokeFunction",
-        "ec2:AuthorizeSecurityGroupIngress",
-        "ec2:AuthorizeSecurityGroupEgress",
+      actions: [
+        "ec2:InvokeFunction",
         "ec2:RevokeSecurityGroupIngress",
         "ec2:RevokeSecurityGroupEgress",
-        "ec2:CreateSecurityGroup"],
+        "ec2:CreateSecurityGroup",
+        "ec2:Describe*"
+      ],
     }));
 
     const revokeSGRuleLambda = new lambda.Function(this, 'RevokeSGRuleLambda', {

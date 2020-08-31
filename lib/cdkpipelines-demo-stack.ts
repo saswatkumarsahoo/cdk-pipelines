@@ -14,6 +14,7 @@ export class CdkpipelinesDemoStack extends cdk.Stack {
     const lambdaRole = new iam.Role(this, "lambdaRole", {
       assumedBy: new iam.ServicePrincipal("lambda.amazonaws.com"),
       description: "role assumed by lambda function",
+      managedPolicies: [iam.ManagedPolicy.fromAwsManagedPolicyName("AWSLambdaBasicExecutionRole")]
     })
 
     lambdaRole.addToPolicy(new iam.PolicyStatement({
